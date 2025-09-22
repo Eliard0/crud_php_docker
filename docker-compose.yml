@@ -1,0 +1,32 @@
+services: 
+  web: 
+    build: ./docker/web
+    volumes: 
+      - ./:/var/www/html/
+    ports: 
+      - 80:80
+  db: 
+    image: mysql:latest
+    volumes:
+      - db:/var/lib/mysql/
+    environment:  
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_DATABASE=cursos
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=db
+
+volumes:
+  db:
+  
+
+# ser usar um usuario que nao seja o root no mysql use essa configuracao no environment
+# - MYSQL_ROOT_PASSWORD=12345
+# - MYSQL_DATABASE=cursos
+# - MYSQL_USER=root
+# - MYSQL_PASSWORD=12345
+ 
