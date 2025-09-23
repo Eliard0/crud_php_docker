@@ -1,24 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ola mundo</title>
-</head>
-<body>
-    <?php
-        $servername = "db";
-        $username = "root";
-        $password = "12345";
-        $dbname = "cursos";
+<?php
+    $servername = "db";
+    $username = "root";
+    $password = "12345";
+    $dbname = "cursos";
+    $charset = "utf8mb4";
+    $port = "3306";
 
-        $connection = new mysqli($servername, $username, $password, $dbname);
+    $connection = "mysql:host=$servername;port=$port;dbname=$dbname;charset=$charset";
 
-        if($connection->connect_error){
-            die("falha na conexao" .  $connection->connect_error);
-        }
+    $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false
+    ];
 
-        echo "db online";
-    ?>
-</body>
-</html>
+    try {
+        $pdo = new PDO($connection, $username, $password, $options);
+    } catch (\PDOException $e) {
+        throw new \PDOException($e->getMessage(), (int)$e->getCode());
+    }
+?>
