@@ -1,3 +1,11 @@
+docker serve para tornar o nosso ambiente de desenvolvimento mais proximo ao ambiente de produção.
+docker image - er a tecnologia a ser ultilizada como php, react, laravel, mysql, etc.
+dockerfile - er o arquivo que contem instrucões de qual imagem baixa, blibiotecas, e onde ficaram armazenados esses dados
+
+docker volume -  é uma forma de armazenar dados de maneira persistente. Por padrão, os dados dentro de um contêiner são temporários e são apagados quando o contêiner é removido.
+
+docker composer - er uma ferramenta para gerenciar varios containers ao mesmo tempo.
+
 docker network ls - para verificas as rede.
 docker network create ( nome da rede ) - para criar uma rede.
 

@@ -1,10 +1,3 @@
-<?php
-require 'db.php';
-
-$query = $pdo->query('SELECT * FROM professores ORDER BY created_at');
-$data = $query->fetchAll();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,12 +24,12 @@ $data = $query->fetchAll();
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $value): ?>
+                <?php foreach ($teachers as $teacher): ?>
 
                     <tr>
-                        <td> <?= htmlspecialchars($value['nome']) ?> </td>
-                        <td> <?= htmlspecialchars($value['materia']) ?> </td>
-                        <td> <?= htmlspecialchars($value['created_at']) ?> </td>
+                        <td> <?= htmlspecialchars($teacher['nome']) ?> </td>
+                        <td> <?= htmlspecialchars($teacher['materia']) ?> </td>
+                        <td> <?= htmlspecialchars($teacher['created_at']) ?> </td>
                         <td>
                             <button type="button" class="btn btn-success">Editar</button>
                             <button type="button" class="btn btn-danger">Apagar</button>

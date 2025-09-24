@@ -2,7 +2,8 @@ services:
   web: 
     build: ./docker/web
     volumes: 
-      - ./:/var/www/html/
+      - ./:/var/www/
+      - ./public:/var/www/html/
     ports: 
       - 80:80
   db: 
