@@ -1,10 +1,3 @@
-<?php
-require 'db.php';
-
-$query = $pdo->query('SELECT * FROM professores ORDER BY created_at');
-$data = $query->fetchAll();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,16 +14,20 @@ $data = $query->fetchAll();
             <a href="index.php" class="btn btn-primary">Lista</a>
         </div>
 
-        <form>
+        <form action="index.php?action=<?= isset($teacher) ? 'update' : 'store' ?>" method="POST">
+            <div class="mb-3">
+                <input type="hidden" class="form-control" id="id" name="id" value="<?= htmlspecialchars($teacher['id']) ?>">
+            </div>
+
             <div class="mb-3">
                 <label class="form-label">Nome</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="nome" name="name" value="<?= isset($teacher) ? htmlspecialchars($teacher['nome']) : '' ?>" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Materia</label>
-                <input type="password" class="form-control" id="materia" name="materia">
+                <input type="text" class="form-control" id="materia" name="materia" value="<?= isset($teacher) ? htmlspecialchars($teacher['materia']) : '' ?>" required>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary"><?= isset($teacher) ? 'Atualizar' : 'Cadastrar' ?></button>
         </form>
 
     </div>

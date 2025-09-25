@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <div class="d-flex justify-content-end mt-5">
-            <a href="create.php" class="btn btn-primary">Adicionar novo professor</a>
+            <a href="index.php?action=create" class="btn btn-primary">Adicionar novo professor</a>
         </div>
 
         <table class="table mt-5">
@@ -26,13 +26,16 @@
             <tbody>
                 <?php foreach ($teachers as $teacher): ?>
 
-                    <tr>
+                    <tr class="align-middle">
                         <td> <?= htmlspecialchars($teacher['nome']) ?> </td>
                         <td> <?= htmlspecialchars($teacher['materia']) ?> </td>
-                        <td> <?= htmlspecialchars($teacher['created_at']) ?> </td>
+                        <td> <?= htmlspecialchars(date('d/m/Y', strtotime($teacher['created_at']))) ?> </td>
                         <td>
-                            <button type="button" class="btn btn-success">Editar</button>
-                            <button type="button" class="btn btn-danger">Apagar</button>
+                            <a href="index.php?action=edit&id=<?= $teacher['id'] ?>" type="button" class="btn btn-success">Editar</a>
+                            <form action="index.php?action=delete" method="post" style="display:inline;">
+                                <input type="hidden" name="id" value="<?= $teacher['id'] ?>">
+                                <button type="submit" class="btn btn-danger">Apagar</button>
+                            </form>
                         </td>
                     </tr>
 
