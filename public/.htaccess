@@ -1,0 +1,13 @@
+RewriteEngine On
+
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f [OR]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ - [L]
+
+RewriteRule ^(.*)$ index.php?action=$1 [QSA,L]
+
+<FilesMatch "\.(css|js|png|jpg)$">
+    Require all denied
+</FilesMatch>

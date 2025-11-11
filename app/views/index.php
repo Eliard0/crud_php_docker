@@ -31,7 +31,7 @@
                         <td> <?= htmlspecialchars($teacher['materia']) ?> </td>
                         <td> <?= htmlspecialchars(date('d/m/Y', strtotime($teacher['created_at']))) ?> </td>
                         <td>
-                            <a href="index.php?action=edit&id=<?= $teacher['id'] ?>" type="button" class="btn btn-success">Editar</a>
+                            <a href="index.php?action=edit/<?= $teacher['id'] ?>" type="button" class="btn btn-success">Editar</a>
                             <form action="index.php?action=delete" method="post" style="display:inline;">
                                 <input type="hidden" name="id" value="<?= $teacher['id'] ?>">
                                 <button type="submit" class="btn btn-danger">Apagar</button>
